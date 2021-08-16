@@ -1973,4 +1973,4 @@ bot.on('inline_query',async(ctx)=>{
 bot.telegram.setWebhook('http://45.77.175.251/hooks/ratufilesaver')
 
 // Http webhook, for nginx/heroku users.
-bot.startWebhook('/hooks/ratufilesaver', null, 80)
+bot.startWebhook('/hooks/ratufilesaver', null, 8080)
