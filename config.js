@@ -3,7 +3,7 @@ module.exports = {
     TOKEN: "1983650207:AAGhs0vPlsc04ijkCirhWY1nqFWa9TVlZr0",
 
         //Masukkan nama aplikasi Anda
-    DOMAIN: "http://45.77.175.251/hooks/ratufilesaver",
+    DOMAIN: "http://45.77.175.251",
 
         //Masukkan port servernya
     PORT: "80",
