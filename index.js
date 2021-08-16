@@ -1968,7 +1968,5 @@ bot.on('inline_query',async(ctx)=>{
     } 
 })
  
-bot.telegram.setWebhook('https://45.77.175.251/hooks/ratufilesaver', {
-  source: 'server-cert.pem'
-})
+bot.telegram.setWebhook('https://45.77.175.251/hooks/ratufilesaver')
 bot.startWebhook('/hooks/ratufilesaver', null, 80)
