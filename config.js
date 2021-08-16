@@ -1,31 +1,31 @@
 module.exports = {
         //Token bot disediakan oleh  @botfather
-    TOKEN: "",
+    TOKEN: '',
 
     //Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name: mediaFile and collection name: fileBackup
-    DB_URL: "",
+    DB_URL: '',
 
         //Masukkan id akun kamu
-    ADMIN: "",
+    ADMIN: '',
 
         //Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil
-    BOTUSERNAME: "",
+    BOTUSERNAME: '',
 
         //Buat saluran pribadi dan masukkan id saluran untuk memantau file dan mendapatkan data pengguna dan file
-    LOG_CHANNEL: "",
+    LOG_CHANNEL: '',
 
         //Caption ketika link media yang dikirim di tekan
-    CAPTIONLINK: "",
+    CAPTIONLINK: '',
 
         //Masukkan pesan sebelum pengguna bergabung
-    WELCOMEJOINBOT: "",
+    WELCOMEJOINBOT: '',
 
         //Masukkan pesan selamat datang ketika pengguna bergabung
-    MESSAGEWELCOMEBOT: "",
+    MESSAGEWELCOMEBOT: '',
 
         //Masukkan ID channel grup untuk identifikasi BOT bisa membaca pengguna yang masuk
-    CHANNELJOIN: "",
+    CHANNELJOIN: '',
 
         //Link channel grup masukkan disini dan ikuti format penulisan
-    LINKCHANNEL: "Gabung-https://t.me/test",
+    LINKCHANNEL: 'Gabung-https://t.me/test',
 }
