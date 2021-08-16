@@ -4,16 +4,15 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 Instalasi yang dibutuhkan
 1. NodeJS
 2. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
-
-    <code>npm install filsaverobot
+<code>npm install filsaverobot
     
-    npm install dotenv
+npm install dotenv
     
-    npm install mongodb
+npm install mongodb
     
-    npm install nodemon
+npm install nodemon
     
-    npm install telegraf</code>
+npm install telegraf</code>
 
 
 Detail yang diperlukan.
