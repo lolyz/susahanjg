@@ -4,7 +4,7 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 Instalasi yang dibutuhkan
 1. NodeJS
 2. PM2
-3. NPM yang dibutuhkan
+3. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
     npm install filsaverobot
     npm install dotenv
     npm install mongodb
@@ -24,6 +24,9 @@ Pemasangan ada di file config.js
 
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
+
+Jangan lupa gunakan perintah ini untuk jalankan botnya
+<code>pm2 start /path/test.js</code> /path/ adalah tempat dimana aplikasi index.js disimpan
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
 
