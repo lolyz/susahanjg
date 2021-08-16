@@ -1,6 +1,6 @@
 require('dotenv').config()
-const fs = require('fs')
 const { Telegraf } = require('telegraf')
+const config = require('./config.js');
 const bot = new Telegraf(config.TOKEN)
 
 process.env.TZ = "Asia/Jakarta";
@@ -9,9 +9,7 @@ process.env.TZ = "Asia/Jakarta";
 const db = require('./config/connection')
 const collection = require('./config/collection')
 const saver = require('./database/filesaver')
-const helpcommand = require('./help.js');
-
-const config = require('./config.js');
+const helpcommand = require('./help.js')
 
 //DATABASE CONNECTION 
 db.connect((err) => {
@@ -1968,9 +1966,5 @@ bot.on('inline_query',async(ctx)=>{
         //console.log('query not found');
     } 
 })
- 
-//heroku config
-bot.telegram.setWebhook('http://45.77.175.251/hooks/ratufilesaver')
 
-// Http webhook, for nginx/heroku users.
-bot.startWebhook('/hooks/ratufilesaver', null, 8080)
+bot.launch()
