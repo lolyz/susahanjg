@@ -3,10 +3,10 @@ module.exports = {
     TOKEN: "1983650207:AAGhs0vPlsc04ijkCirhWY1nqFWa9TVlZr0",
 
         //Masukkan nama aplikasi Anda
-    DOMAIN: "http://45.77.175.251",
+    //DOMAIN: "http://45.77.175.251",
 
         //Masukkan port servernya
-    PORT: "80",
+    //PORT: "80",
 
     //Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name: mediaFile and collection name: fileBackup
     DB_URL: "",
