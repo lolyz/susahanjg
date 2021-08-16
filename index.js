@@ -1968,12 +1968,8 @@ bot.on('inline_query',async(ctx)=>{
     } 
 })
  
-//heroku config
-bot.launch({
-    webhook:{
-       domain: 'http://45.77.175.251/hooks/ratufilesaver',
-        port: 9000,
-        host: 'localhost'
- 
-    }
-})
+//webhook config
+bot.telegram.setWebhook('http://45.77.175.251/hooks/ratufilesaver')
+
+// Http webhook, for nginx/heroku users.
+bot.startWebhook('/hooks/ratufilesaver', null, 80)
