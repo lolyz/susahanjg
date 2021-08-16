@@ -6,15 +6,15 @@ Instalasi yang dibutuhkan
 2. PM2
 3. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
 
-<code>npm install filsaverobot</code>
+<code>npm install -g filsaverobot</code>
     
-<code>npm install dotenv</code>
+<code>npm install -g dotenv</code>
     
-<code>npm install mongodb</code>
+<code>npm install -g mongodb</code>
     
-<code>npm install nodemon</code>
+<code>npm install -g nodemon</code>
     
-<code>npm install telegraf</code>
+<code>npm install -g telegraf</code>
 
 
 Detail yang diperlukan.
