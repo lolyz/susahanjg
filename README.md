@@ -1,24 +1,20 @@
 # RatuFileSaver2
 Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup.
 
+Instalasi yang dibutuhkan
+1. NodeJS
+2. PM2
+3. NPM yang dibutuhkan
+    npm install filsaverobot
+    npm install dotenv
+    npm install mongodb
+    npm install nodemon
+    npm install telegraf
 
-<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
-<br>
-Ganti tautan dengan template github Anda.
-</br>
-
-<br>
-<a href="https://youtu.be/zw_ijvhzomI">
-Klik di sini untuk menonton cara meng-host
-</a>
-<br>
 Detail yang diperlukan.
+Pemasangan ada di file config.js
 
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
-
-<code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.
 
 <code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
 
