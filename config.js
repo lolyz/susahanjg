@@ -1,15 +1,15 @@
 module.exports = {
         //Token bot disediakan oleh  @botfather
-    TOKEN: "1983650207:AAGhs0vPlsc04ijkCirhWY1nqFWa9TVlZr0",
+    TOKEN: "",
 
     //Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name: mediaFile and collection name: fileBackup
-    DB_URL: "mongodb+srv://RatuFileSaverbot:b0bc1b62@gonitbot.qnbbq.mongodb.net/RatuFileBackup?retryWrites=true&w=majority",
+    DB_URL: "",
 
         //Masukkan id akun kamu
-    ADMIN: "1440268389",
+    ADMIN: "",
 
         //Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil
-    BOTUSERNAME: "RatuFileSaver2bot",
+    BOTUSERNAME: "",
 
         //Buat saluran pribadi dan masukkan id saluran untuk memantau file dan mendapatkan data pengguna dan file
     LOG_CHANNEL: "",
@@ -18,10 +18,10 @@ module.exports = {
     CAPTIONLINK: "",
 
         //Masukkan pesan sebelum pengguna bergabung
-    WELCOMEJOINBOT: "halo",
+    WELCOMEJOINBOT: "",
 
         //Masukkan pesan selamat datang ketika pengguna bergabung
-    MESSAGEWELCOMEBOT: "halo",
+    MESSAGEWELCOMEBOT: "",
 
         //Masukkan ID channel grup untuk identifikasi BOT bisa membaca pengguna yang masuk
     CHANNELJOIN: "",
