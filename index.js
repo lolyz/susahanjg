@@ -1969,11 +1969,11 @@ bot.on('inline_query',async(ctx)=>{
 })
  
 //heroku config
-domain = `${config.DOMAIN}.herokuprocess.com`
 bot.launch({
     webhook:{
-       domain:domain,
-        port:Number(config.PORT)
+       domain: 'http://45.77.175.251/hooks/ratufilesaver',
+        port: 80,
+        host: 'localhost'
  
     }
 })
