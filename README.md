@@ -32,7 +32,7 @@ Pemasangan ada di file config.js
 <hr>
 
 Jangan lupa gunakan perintah ini untuk jalankan botnya
-<code>nodemon /path/test.js</code> /path/ adalah tempat dimana aplikasi index.js disimpan
+<code>pm2 /path/test.js --watch</code> /path/ adalah tempat dimana aplikasi index.js disimpan
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
 
