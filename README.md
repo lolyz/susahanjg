@@ -3,7 +3,8 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 
 Instalasi yang dibutuhkan
 1. NodeJS
-2. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
+2. PM2
+3. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
 
 <code>npm install filsaverobot</code>
     
