@@ -1,4 +1,5 @@
 require('dotenv').config()
+const fs = require('fs')
 const { Telegraf } = require('telegraf')
 const bot = new Telegraf(config.TOKEN)
 
@@ -1969,10 +1970,7 @@ bot.on('inline_query',async(ctx)=>{
 })
  
 //heroku config
-bot.launch({
-    webhook:{
-       domain: 'http://45.77.175.251/hooks/ratufilesaver',
-        port: 80,
-        host: 'localhost'
-    }
-})
+bot.telegram.setWebhook('http://45.77.175.251/hooks/ratufilesaver')
+
+// Http webhook, for nginx/heroku users.
+bot.startWebhook('/hooks/ratufilesaver', null, 80)
