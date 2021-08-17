@@ -23,8 +23,7 @@ Pemasangan ada di file config.js
 
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
 
-<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
-<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot). <code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
 
 <code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.
 
