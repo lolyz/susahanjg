@@ -32,7 +32,7 @@ Pemasangan ada di file config.js
 <hr>
 
 Jangan lupa gunakan perintah ini untuk jalankan botnya
-<code>pm2 start /path/test.js --watch</code> /path/ adalah tempat dimana aplikasi index.js disimpan
+<code>pm2 start /path/test.js --watch</code> /path/ adalah tempat dimana aplikasi index.js disimpan dan gunakan web ini untuk monitoring pm2 https://app.pm2.io/
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
 
