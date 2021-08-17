@@ -1143,7 +1143,7 @@ bot.on('document', async (ctx) => {
         }
     }
     
-    if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         if(!fileDetails1.mediaId){
             if(!fileDetails1.file_name){
                 saver.saveFile(fileDetails2)
@@ -1349,7 +1349,7 @@ bot.on('document', async (ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`)
+
         }
     }
 
@@ -1430,7 +1430,7 @@ bot.on('video', async(ctx) => {
         }
     }
 
-    if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         if(!fileDetails1.mediaId){
             if(!fileDetails1.file_name){
                 saver.saveFile(fileDetails2)
@@ -1636,7 +1636,7 @@ bot.on('video', async(ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`) 
+
         }
     }
 
@@ -1717,7 +1717,7 @@ bot.on('photo', async(ctx) => {
         }
     }
 
-    if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         if(!fileDetails1.mediaId){
             if(!fileDetails1.file_name){
                 saver.saveFile(fileDetails2)
@@ -1923,7 +1923,7 @@ bot.on('photo', async(ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`)    
+              
         }
     }
 
