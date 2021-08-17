@@ -5,14 +5,8 @@ module.exports = {
     //Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name: mediaFile and collection name: fileBackup
     DB_URL: '',
 
-        //Masukkan id akun kamu
+        //Masukkan id akun kamu, jika ada admin ke 2 dan ke 3 isi ADMIN1 dan ADMIN2
     ADMIN: '',
-
-        //Masukkan id akun kamu, jika tidak ada admin ke 2 abaikan
-    ADMIN1: '',
-
-        //Masukkan id akun kamu, jika tidak ada admin ke 3 abaikan
-    ADMIN2: '',
 
         //Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil
     BOTUSERNAME: '',
