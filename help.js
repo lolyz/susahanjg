@@ -35,6 +35,7 @@ module.exports.botinstall1 = `<u>BOT akan memberitahu Anda cara install</u>
 
 module.exports.botinstall2 = `<u>BOT akan memberitahu Anda cara install</u>
 \nDownload dulu file nya <a href='https://github.com/BimoSora/RatuFileSaver2'>DI SINI</a>
+\nInstalasi yang dibutuhkan
 NodeJS
 PM2
 NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT\n1. npm install -g filsaverobot\n2. npm install -g dotenv\n3. npm install -g mongodb\n4. npm install -g nodemon\n5. npm install -g telegraf
