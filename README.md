@@ -1,5 +1,6 @@
 # RatuFileSaver2
 Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup.
+<hr>
 
 Instalasi yang dibutuhkan
 1. NodeJS
