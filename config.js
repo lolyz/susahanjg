@@ -8,10 +8,10 @@ module.exports = {
         //Masukkan id akun kamu
     ADMIN: '',
 
-        //Masukkan id akun kamu jika tidak ada admin ke2 abaikan
+        //Masukkan id akun kamu jika tidak ada admin ke 2 abaikan
     ADMIN1: '',
 
-        //Masukkan id akun kamu jika tidak ada admin ke3 abaikan
+        //Masukkan id akun kamu jika tidak ada admin ke 3 abaikan
     ADMIN2: '',
 
         //Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil
