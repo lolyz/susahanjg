@@ -15,7 +15,7 @@ Instalasi yang dibutuhkan
 <code>npm install -g nodemon</code>
     
 <code>npm install -g telegraf</code>
-
+<hr>
 
 Detail yang diperlukan.
 Pemasangan ada di file config.js
