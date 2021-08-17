@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient
 const collection = require('./collection')
-const config = require('../config.js');
+const config = require('../config.js')
 require('dotenv').config()
 
 const state = {
