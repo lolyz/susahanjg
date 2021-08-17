@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
-const config = require('./config.js');
+const config = require('./config.js')
 const bot = new Telegraf(config.TOKEN)
 
 process.env.TZ = "Asia/Jakarta";
