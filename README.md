@@ -33,8 +33,8 @@ Pemasangan ada di file config.js
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
 
-Jangan lupa gunakan perintah ini untuk jalankan botnya
-<code>pm2 start /path/test.js --watch</code> /path/ adalah tempat dimana aplikasi index.js disimpan dan gunakan web ini untuk monitoring pm2 <a href="https://app.pm2.io/">PM2 Monitoring</a>
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada didalan folder BOT
+<code>pm2 start ecosystem.config.js</code>
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
