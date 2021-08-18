@@ -1993,15 +1993,5 @@ bot.on('inline_query',async(ctx)=>{
         //console.log('query not found');
     } 
 })
- 
-//heroku config
-domain = `${config.DOMAIN}.herokuapp.com`
-bot.launch({
-    webhook:{
-       domain:domain,
-        port:Number(config.PORT)
- 
-    }
-})
 
 bot.launch()
