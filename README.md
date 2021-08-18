@@ -5,7 +5,7 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 Instalasi yang dibutuhkan
 1. NodeJS
 2. PM2 <code>npm install -g pm2</code>
-3. NPM yang dibutuhkan. Jangan pasang pasang di tempat package.json disimpan difolder BOT
+3. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
 
 <code>npm install filsaverobot</code>
     
@@ -33,7 +33,7 @@ Pemasangan ada di file config.js
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
 
-Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada didalan folder BOT
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada didalam folder BOT
 <code>pm2 start ecosystem.config.js</code>
 <hr>
 
