@@ -33,8 +33,8 @@ Pemasangan ada di file config.js
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
 
-Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada didalam folder BOT
-<code>pm2 start ecosystem.config.js</code>
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik cd /namafolder
+<code>pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
