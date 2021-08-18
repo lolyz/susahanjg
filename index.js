@@ -3,7 +3,7 @@ const { Telegraf } = require('telegraf')
 const config = require('./config.js')
 const bot = new Telegraf(config.TOKEN)
 
-config.TZ = "Asia/Jakarta";
+process.env.TZ = "Asia/Jakarta";
 
 //database
 const db = require('./config/connection')
