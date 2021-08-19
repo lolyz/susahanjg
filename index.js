@@ -195,7 +195,6 @@ bot.start(async(ctx)=>{
                         }
                     }else{
                         try {
-                            var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
                             var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
                             //console.log(member);
                             if(member.status == 'restricted' || member.status == 'left' || member.status == 'kicked'){
@@ -440,7 +439,6 @@ bot.command('reload',async(ctx)=>{
         groupId:ctx.chat.id
     }
 
-    var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
     var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
     //console.log(memberstatus);
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
@@ -1160,7 +1158,6 @@ bot.on('document', async (ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    var botStatus3 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
                     var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
                     //console.log(member3);
                     if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
@@ -1359,7 +1356,6 @@ bot.on('video', async(ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    var botStatus3 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
                     var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
                     //console.log(member3);
                     if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
@@ -1558,7 +1554,6 @@ bot.on('photo', async(ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    var botStatus3 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
                     var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
                     //console.log(member3);
                     if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
