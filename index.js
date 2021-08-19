@@ -187,109 +187,118 @@ bot.start(async(ctx)=>{
                 }
             }
         }else{
-            try {
-                var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
-                var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
-                //console.log(member);
-                if(!member || member.status == 'left' || member.status == 'kicked'){
-                    const profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-                    if(!profile2 || profile2.total_count == 0)
-                        return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
-                            parse_mode:'HTML',
-                            disable_web_page_preview: true,
-                            reply_markup:{
-                                inline_keyboard:inKey2
-                            }
-                        })
-                        ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
-                            parse_mode:'HTML',
-                            disable_web_page_preview: true,
-                            reply_markup:{
-                                inline_keyboard:inKey2
-                            }
-                        })
-                }else{
-                    //welcoming message on /start and ifthere is a query available we can send files
-                    if(length == 1){
-                        const profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-                        if(!profile3 || profile3.total_count == 0)
-                            return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
-                                parse_mode:'HTML',
-                                disable_web_page_preview: true,
-                                reply_markup:{
-                                    inline_keyboard:inKey
-                                }
-                            })
-                            ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
-                                parse_mode:'HTML',
-                                disable_web_page_preview: true,
-                                reply_markup:{
-                                    inline_keyboard:inKey
-                                }
-                            })
-                        }else{
-                            if (query.indexOf('grp_') > -1){
-                                var query1 = query.replace('grp_','');
-                                try{
-                                    file = await saver.getFile1(query1).then((res1)=>{
-                                        //console.log(res1);
-                                        let mediagroup = [];
-                                        for (let index = 0; index < res1.length; index++) {
-                                            const data = res1[index];
-                                            mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
+            await saver.checkBan(`${ctx.from.id}`).then((res) => {
+                //console.log(res);
+                    if(res == true) {
+                        if(ctx.chat.type == 'private') {
+                            ctx.reply(`${messagebanned(ctx)}`)
+                        }
+                    }else{
+                        try {
+                            var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
+                            var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
+                            //console.log(member);
+                            if(!member || member.status == 'left' || member.status == 'kicked'){
+                                const profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                                if(!profile2 || profile2.total_count == 0)
+                                    return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
+                                        parse_mode:'HTML',
+                                        disable_web_page_preview: true,
+                                        reply_markup:{
+                                            inline_keyboard:inKey2
                                         }
-                                        //console.log(mediagroup);
-                                        function captionFunction() {
-                                            ctx.reply(`${captionbuild(ctx)}`,{
-                                                parse_mode:'HTML'
-                                            })
-                                        }
-                                        return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 1000)
                                     })
-                                }catch(error){
-                                    ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
-                                }
+                                    ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
+                                        parse_mode:'HTML',
+                                        disable_web_page_preview: true,
+                                        reply_markup:{
+                                            inline_keyboard:inKey2
+                                        }
+                                    })
                             }else{
-                                let query2 = query;
-                                try{
-                                    file2 = await saver.getFile2(query2).then((res2)=>{
-                                        //console.log(res2);
-                                        if(res2.type=='video'){
-                                            if(!res2.caption)
-                                                return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
+                                //welcoming message on /start and ifthere is a query available we can send files
+                                if(length == 1){
+                                    const profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                                    if(!profile3 || profile3.total_count == 0)
+                                        return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+                                            parse_mode:'HTML',
+                                            disable_web_page_preview: true,
+                                            reply_markup:{
+                                                inline_keyboard:inKey
+                                            }
+                                        })
+                                        ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+                                            parse_mode:'HTML',
+                                            disable_web_page_preview: true,
+                                            reply_markup:{
+                                                inline_keyboard:inKey
+                                            }
+                                        })
+                                    }else{
+                                        if (query.indexOf('grp_') > -1){
+                                            var query1 = query.replace('grp_','');
+                                            try{
+                                                file = await saver.getFile1(query1).then((res1)=>{
+                                                    //console.log(res1);
+                                                    let mediagroup = [];
+                                                    for (let index = 0; index < res1.length; index++) {
+                                                        const data = res1[index];
+                                                        mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
+                                                    }
+                                                    //console.log(mediagroup);
+                                                    function captionFunction() {
+                                                        ctx.reply(`${captionbuild(ctx)}`,{
+                                                            parse_mode:'HTML'
+                                                        })
+                                                    }
+                                                    return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 1000)
                                                 })
-                                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
+                                            }catch(error){
+                                                ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                                            }
+                                        }else{
+                                            let query2 = query;
+                                            try{
+                                                file2 = await saver.getFile2(query2).then((res2)=>{
+                                                    //console.log(res2);
+                                                    if(res2.type=='video'){
+                                                        if(!res2.caption)
+                                                            return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                            ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                    }else if(res2.type=='photo'){
+                                                        if(!res2.caption)
+                                                            return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                            ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                    }else if(res2.type=='document'){
+                                                        if(!res2.caption)
+                                                            return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                            ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                                parse_mode:'HTML'
+                                                            })
+                                                    }
                                                 })
-                                        }else if(res2.type=='photo'){
-                                            if(!res2.caption)
-                                                return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
-                                                ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
-                                        }else if(res2.type=='document'){
-                                            if(!res2.caption)
-                                                return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
-                                                ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
+                                            }catch(error){
+                                                ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                                            }
                                         }
-                                    })
-                                }catch(error){
-                                    ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                                    }
                                 }
                             }
+                        catch(error){
+                            ctx.reply(`${messagebotnoaddgroup(ctx)}`)
                         }
                     }
-                }
-            catch(error){
-                ctx.reply(`${messagebotnoaddgroup(ctx)}`)
-            }
+            })
         }
         //saving user details to the database
         saver.saveUser(user)
