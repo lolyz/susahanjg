@@ -112,7 +112,7 @@ bot.start(async(ctx)=>{
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             //welcoming message on /start and ifthere is a query available we can send files
             if(length == 1){
-                const profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                 if(!profile || profile.total_count == 0)
                     return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                         parse_mode:'HTML',
@@ -193,7 +193,7 @@ bot.start(async(ctx)=>{
                 var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
                 //console.log(member);
                 if(member.status == 'restricted' || member.status == 'left' || member.status == 'kicked'){
-                    const profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                    const profile2 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile2 || profile2.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
@@ -213,7 +213,7 @@ bot.start(async(ctx)=>{
                 }else{
                     //welcoming message on /start and ifthere is a query available we can send files
                     if(length == 1){
-                        const profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                        const profile3 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                         if(!profile3 || profile3.total_count == 0)
                             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                                 parse_mode:'HTML',
@@ -394,7 +394,7 @@ bot.action('COMM',(ctx)=>{
 bot.action('STARTUP',async(ctx)=>{
     ctx.deleteMessage()
     if(ctx.chat.id == 'private'){
-        const profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
         if(!profile || profile.total_count == 0)
             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                 parse_mode:'HTML',
@@ -861,7 +861,7 @@ bot.command('send',async(ctx)=>{
 //check account
 bot.command('getid',async(ctx)=>{
     if(ctx.chat.type == 'private') {
-        const profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        const profile4 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
             if(!profile4 || profile4.total_count == 0){
                 ctx.reply(`<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
                     parse_mode:'HTML'  
@@ -1222,7 +1222,7 @@ bot.on('document', async (ctx) => {
             //console.log(member3);
             if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
                 if(ctx.chat.type == 'private') {
-                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile6 || profile6.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
@@ -1880,7 +1880,7 @@ bot.on('photo', async (ctx) => {
             //console.log(member3);
             if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
                 if(ctx.chat.type == 'private') {
-                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile6 || profile6.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
