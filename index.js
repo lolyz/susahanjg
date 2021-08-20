@@ -1113,7 +1113,7 @@ bot.on('document', async (ctx) => {
         }else{
             var exstension2 = document.file_name;
             var regex2 = /\.[A-Za-z0-9]+$/gm
-            var doctext2 = exstension2.replace(regex, '');
+            var doctext2 = exstension2.replace(regex2, '');
             fileDetails4 = {
                 file_name: doctext2,
                 userId:ctx.from.id,
@@ -1384,7 +1384,7 @@ bot.on('video', async (ctx) => {
         }else{
             var exstension2 = video.file_name;
             var regex2 = /\.[A-Za-z0-9]+$/gm
-            var vidext2 = exstension2.replace(regex, '');
+            var vidext2 = exstension2.replace(regex2, '');
             fileDetails4 = {
                 file_name: vidext2,
                 userId:ctx.from.id,
@@ -1655,7 +1655,7 @@ bot.on('photo', async (ctx) => {
         }else{
             var exstension2 = photo[1].file_name;
             var regex2 = /\.[A-Za-z0-9]+$/gm
-            var photext2 = exstension2.replace(regex, '');
+            var photext2 = exstension2.replace(regex2, '');
             fileDetails4 = {
                 file_name: photext2,
                 userId:ctx.from.id,
