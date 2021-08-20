@@ -211,7 +211,7 @@ bot.start(async(ctx)=>{
                 }else{
                     //welcoming message on /start and ifthere is a query available we can send files
                     if(length == 1){
-                        const profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                        const profile3 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
                         if(!profile3 || profile3.total_count == 0)
                             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                                 parse_mode:'HTML',
