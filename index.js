@@ -96,19 +96,18 @@ const inKey2 = [
 //BOT START
 bot.start(async(ctx)=>{
 
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    //console.log(msgArray.length);
-    let length = msgArray.length
-    msgArray.shift()
-    let query = msgArray.join(' ')
-
-     user ={
-        first_name:ctx.from.first_name,
-        userId:ctx.from.id
-    }
-
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        //console.log(msgArray.length);
+        let length = msgArray.length
+        msgArray.shift()
+        let query = msgArray.join(' ')
+    
+         user = {
+            first_name:ctx.from.first_name,
+            userId:ctx.from.id
+        }
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             //welcoming message on /start and ifthere is a query available we can send files
             if(length == 1){
@@ -411,14 +410,16 @@ bot.action('STARTUP',async(ctx)=>{
 
 //TEST BOT
 bot.hears('ping',(ctx)=>{
-    let chatId = ctx.message.from.id;
-    let opts = {
-        reply_to_message_id: ctx.message.message_id,
-        reply_markup:{
-            inline_keyboard: [[{text:'OK',callback_data:'PONG'}]]
+    if(ctx.chat.type == 'private') {
+        let chatId = ctx.message.from.id;
+        let opts = {
+            reply_to_message_id: ctx.message.message_id,
+            reply_markup:{
+                inline_keyboard: [[{text:'OK',callback_data:'PONG'}]]
+            }
         }
+        return bot.telegram.sendMessage(chatId, 'pong', opts);
     }
-    return bot.telegram.sendMessage(chatId, 'pong', opts);
 })
 
 bot.action('PONG',(ctx)=>{
@@ -427,13 +428,13 @@ bot.action('PONG',(ctx)=>{
 
 //GROUP COMMAND
 bot.command('reload',async(ctx)=>{
-    group ={
-        groupId:ctx.chat.id
-    }
 
     var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
     var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
     //console.log(memberstatus);
+    group = {
+        groupId:ctx.chat.id
+    }
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if(!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
             ctx.reply('BOT dimulai ulang')
@@ -873,13 +874,13 @@ bot.command('getid',async(ctx)=>{
 
 //remove files with file_id
 bot.command('rem', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
 
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeFile(text)
             ctx.reply('✅ Dihapus')
@@ -889,13 +890,13 @@ bot.command('rem', (ctx) => {
 
 //remove files with mediaId
 bot.command('remgrp', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
 
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeFileMedia(text)
             ctx.reply('✅ Group Dihapus')
@@ -905,6 +906,7 @@ bot.command('remgrp', (ctx) => {
 
 //remove whole collection(remove all files)
 bot.command('clear',(ctx)=>{
+
     if(ctx.chat.type == 'private') {
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.deleteCollection()
@@ -915,14 +917,14 @@ bot.command('clear',(ctx)=>{
 
 //removing all files sent by a user
 bot.command('remall', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
-    let id = parseInt(text)
 
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
+        let id = parseInt(text)
         if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeUserFile(id)
             ctx.reply('✅ Dihapus')
@@ -977,12 +979,12 @@ bot.command('sendchat',async(ctx)=>{
 
 //broadcasting message to bot users(from last joined to first)
 bot.command('broadcast',async(ctx)=>{
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
 
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
         userDetails = await saver.getUser().then((res)=>{
             n = res.length
             userId = []
@@ -1028,20 +1030,22 @@ bot.command('broadcast',async(ctx)=>{
 
 //ban user with user id
 bot.command('banchat', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text)
-    userId = {
-        id: text
-    }
-
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id == config.ADMIN|| ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
-            saver.banUser(userId).then((res) => {
-                ctx.reply('❌ Dibanned')
-            })
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text)
+        userId = {
+            id: text
+        }
+
+        if(ctx.chat.type == 'private') {
+            if(ctx.from.id == config.ADMIN|| ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
+                saver.banUser(userId).then((res) => {
+                    ctx.reply('❌ Dibanned')
+                })
+            }
         }
     }
     
@@ -1049,20 +1053,22 @@ bot.command('banchat', (ctx) => {
 
 //unban user with user id
 bot.command('unbanchat', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text)
-    userId = {
-        id: text
-    }
-
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
-            saver.unBan(userId).then((res) => {
-                ctx.reply('✅ Selesai')
-            })
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text)
+        userId = {
+            id: text
+        }
+
+        if(ctx.chat.type == 'private') {
+            if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
+                saver.unBan(userId).then((res) => {
+                    ctx.reply('✅ Selesai')
+                })
+            }
         }
     }
 })
