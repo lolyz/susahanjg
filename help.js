@@ -24,18 +24,24 @@ module.exports.botcommand = `<u>Berikut adalah beberapa perintah dan penggunaan 
 \n<b>Cara Mengetahui Total Pengguna BOT.</b>\n<b>/stats</b>\n<b>(Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil).</b>
 `;
 
-module.exports.install = `Silakan pilih cara install nya, bisa Heroku dan bisa komputer sendiri.`;
-
-module.exports.botinstall1 = `<u>BOT akan memberitahu Anda cara install</u>
-\nDownload dulu file nya <a href='https://github.com/BimoSora/RatuFileSaver'>DI SINI</a>
-\n<a href='https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver'>TEMPLATE</a>\nGanti tautan dengan template github Anda.
-\n<a href='https://youtu.be/zw_ijvhzomI'>Klik di sini untuk menonton cara meng-host</a>
-\n<b>~ Detail yang diperlukan ~</b>\n<b>TOKEN</b> - Dapatkan Token BOT dari BOT father.\n<b>DOMAIN</b> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.\n<b>ADMIN</b> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan BOT seperti @getmyid_BOT).\n<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</code>\n<b>BOTUSERNAME</b> - Nama pengguna BOT Anda tanpa '@'.\n<b>DB_URL</b> - Buat akun di <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti 'password' dengan kata sandi pengguna yang memiliki akses ke DB dan ganti 'myFirstDatabase' untuk 'RatuMediaFile'. Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.\n<b>LOG_CHANNEL</b> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsBOT itu mungkin terlihat seperti -1001234567899).
+module.exports.sewabot = `<u>Anda butuh BOT File Saver, silakan cek harga dibawah.</u>
+\n<u>HARGA</u>\nRp 60.000 - BULAN
+\n<u>KEUNTUNGAN</u>\n1. Menggunanakan database dengan kapasitas unmetered.\n2. Menggunakan server terbaik di Singapura.\n3. Ketika server gangguan BOT bisa jalan otomatis.\n4. Jika ada masalah pada BOT team kami siap bantu.
+\nSilakan hubungi <a href="https://t.me/sorahearts">Team Support</a> untuk mendapatkan layanan ini.
 `;
 
-module.exports.botinstall2 = `<u>BOT akan memberitahu Anda cara install</u>
-\nDownload dulu file nya <a href='https://github.com/BimoSora/RatuFileSaver2'>DI SINI</a>
-\nInstalasi yang dibutuhkan\nNodeJS\nPM2 <code>npm install -g pm2</code>\nNPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT\n1. npm install filsaveroBOT\n2. npm install dotenv\n3. npm install mongodb\n4. npm install nodemon\n5. npm install telegraf
-\n<b>~ Detail yang diperlukan ~</b>\nPemasangan ada di file config.js\n<b>TOKEN</b> - Dapatkan Token BOT dari BOT father.\n<b>ADMIN</b> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan BOT seperti @getmyid_BOT).\n<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>\n<b>BOTUSERNAME</b> - Nama pengguna BOT Anda tanpa '@'.\n<b>DB_URL</b> - Buat akun di <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti 'password' dengan kata sandi pengguna yang memiliki akses ke DB dan ganti 'myFirstDatabase' untuk 'RatuMediaFile'. Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.\n<b>LOG_CHANNEL</b> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsBOT itu mungkin terlihat seperti -1001234567899).
-\nJangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder BOT, kalau belum ketik cd /namafolder <code>pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
-`;
+//module.exports.install = `Silakan pilih cara install nya, bisa Heroku dan bisa komputer sendiri.`;
+
+//module.exports.botinstall1 = `<u>BOT akan memberitahu Anda cara install</u>
+//\nDownload dulu file nya <a href='https://github.com/BimoSora/RatuFileSaver'>DI SINI</a>
+//\n<a href='https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver'>TEMPLATE</a>\nGanti tautan dengan template github Anda.
+//\n<a href='https://youtu.be/zw_ijvhzomI'>Klik di sini untuk menonton cara meng-host</a>
+//\n<b>~ Detail yang diperlukan ~</b>\n<b>TOKEN</b> - Dapatkan Token BOT dari BOT father.\n<b>DOMAIN</b> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.\n<b>ADMIN</b> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan BOT seperti @getmyid_BOT).\n<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</code>\n<b>BOTUSERNAME</b> - Nama pengguna BOT Anda tanpa '@'.\n<b>DB_URL</b> - Buat akun di <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti 'password' dengan kata sandi pengguna yang memiliki akses ke DB dan ganti 'myFirstDatabase' untuk 'RatuMediaFile'. Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.\n<b>LOG_CHANNEL</b> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsBOT itu mungkin terlihat seperti -1001234567899).
+//`;
+
+//module.exports.botinstall2 = `<u>BOT akan memberitahu Anda cara install</u>
+//\nDownload dulu file nya <a href='https://github.com/BimoSora/RatuFileSaver2'>DI SINI</a>
+//\nInstalasi yang dibutuhkan\nNodeJS\nPM2 <code>npm install -g pm2</code>\nNPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT\n1. npm install filsaveroBOT\n2. npm install dotenv\n3. npm install mongodb\n4. npm install nodemon\n5. npm install telegraf
+//\n<b>~ Detail yang diperlukan ~</b>\nPemasangan ada di file config.js\n<b>TOKEN</b> - Dapatkan Token BOT dari BOT father.\n<b>ADMIN</b> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan BOT seperti @getmyid_BOT).\n<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>\n<b>BOTUSERNAME</b> - Nama pengguna BOT Anda tanpa '@'.\n<b>DB_URL</b> - Buat akun di <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti 'password' dengan kata sandi pengguna yang memiliki akses ke DB dan ganti 'myFirstDatabase' untuk 'RatuMediaFile'. Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.\n<b>LOG_CHANNEL</b> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsBOT itu mungkin terlihat seperti -1001234567899).
+//\nJangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder BOT, kalau belum ketik cd /namafolder <code>pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
+//`;
