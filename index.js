@@ -157,12 +157,12 @@ bot.start(async(ctx)=>{
                             //console.log(res2);
                             if(res2.type=='video'){
                                 if(!res2.caption)
-                                return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                    parse_mode:'HTML'
-                                })
-                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                    parse_mode:'HTML'
-                                })
+                                    return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
+                                    ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
                             }else if(res2.type=='photo'){
                                 if(!res2.caption)
                                     return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
@@ -256,12 +256,12 @@ bot.start(async(ctx)=>{
                                         //console.log(res2);
                                         if(res2.type=='video'){
                                             if(!res2.caption)
-                                            return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
-                                            ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
+                                                return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
+                                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
                                         }else if(res2.type=='photo'){
                                             if(!res2.caption)
                                                 return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
