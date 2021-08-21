@@ -1,4 +1,4 @@
-module.exports.bothelp = `Halo, kami adalah BOT File Saver. Kami akan terus memperbarui BOT kami, jika kalian menyukainya silakan instal dan ikuti langkahnya.`;
+module.exports.bothelp = `Halo, kami adalah BOT File Saver. Kami akan terus memperbarui BOT kami, jika kalian menyukainya silakan <b>Sewa BOT</b>`;
 
 module.exports.botcommand = `<u>Berikut adalah beberapa perintah dan penggunaan admin.</u>
 \n\n<b>Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.</b>\n<b>/ban</b> userID caption jika ada. <b>/banchat</b> userID (pribadi).\n<b>/unban</b> userID. <b>/unbanchat</b> userID (pribadi).\n<b>/kick</b> userID.\n<b>(Dapatkan UserID dari saluran log).</b>
