@@ -24,7 +24,7 @@ module.exports.botcommand = `<u>Berikut adalah beberapa perintah dan penggunaan 
 \n<b>Cara Mengetahui Total Pengguna BOT.</b>\n<b>/stats</b>\n<b>(Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil).</b>
 `;
 
-module.exports.sewabot = `<u>Anda butuh BOT File Saver, silakan cek harga dibawah.</u>
+module.exports.sewabot = `<u>Anda butuh BOT File Saver, silakan cek harga dibawah</u>
 \n<u>HARGA</u>\nRp 60.000 - BULAN
 \n<u>KEUNTUNGAN</u>\n1. Menggunanakan database dengan kapasitas unmetered.\n2. Menggunakan server terbaik di Singapura.\n3. Ketika server gangguan BOT bisa jalan otomatis.\n4. Jika ada masalah pada BOT team kami siap bantu.
 \nSilakan hubungi <a href="https://t.me/sorahearts">Team Support</a> untuk mendapatkan layanan ini.
