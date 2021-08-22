@@ -27,6 +27,8 @@ module.exports.botcommand = `<u>Berikut adalah beberapa perintah dan penggunaan 
 module.exports.sewabot = `<u>Anda butuh BOT File Saver, silakan cek harga dibawah</u>
 \n<u>HARGA</u>\nRp 60.000 - BULAN
 \n<u>KEUNTUNGAN</u>\n1. Menggunanakan database dengan kapasitas unmetered.\n2. Menggunakan server terbaik di Singapura.\n3. Ketika server gangguan BOT bisa jalan otomatis.\n4. Jika ada masalah pada BOT team kami siap bantu.
+\n<u>Fitur</u>\n1. Bisa ban, unban, kick di grup maupun chat BOT.\n2. Bisa send chat ke pengguna di grup maupun chat BOT.\n3. Ada statistik.\n4. Bisa hapus media satu persatu.\n5. Bisa hapus media secara album.
+\n6. Bisa kirim media satu persatu atau secara album.\n7. Ada join channel saat belum gabung atau saat maksa ngirim media.\n8. Jika BOT belum masuk Group/Channel akan ada informasi BOT belum masuk Group/Channel.
 \nSilakan hubungi <a href="https://t.me/sorahearts">Team Support</a> untuk mendapatkan layanan ini.
 `;
 
