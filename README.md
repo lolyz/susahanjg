@@ -76,11 +76,11 @@ Pemasangan ada di file config.js
 
 <code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.
 
-<code>PORT</code> - POrt didapat dari saat anda setting nginx tadi.
+<code>PORT</code> - Port didapat dari saat anda setting nginx tadi.
 
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
 
-<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).</br>
 <code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
 
 <code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.
