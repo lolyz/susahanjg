@@ -86,10 +86,14 @@ Pemasangan ada di file config.js</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 <hr>
 
-Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd /namafolder pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
+
+<b>LANGKAH 4</b></br>
+Pindahkan semua folder BOT</br>
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
+
 ~ Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
 <code>/ban</code> userID caption jika ada.</br>
 <code>/banchat</code> userID (pribadi).</br>
