@@ -8,17 +8,12 @@ Instalasi yang dibutuhkan
 3. Domain
 4. NodeJS
 5. PM2 <code>npm install -g pm2</code>
-6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
-
-<code>npm install filsaverobot</code>
-    
-<code>npm install dotenv</code>
-    
-<code>npm install mongodb</code>
-    
-<code>npm install nodemon</code>
-    
-<code>npm install telegraf</code>
+6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT</br>
+<code>npm install filsaverobot</code></br>
+<code>npm install dotenv</code></br>
+<code>npm install mongodb</code></br>
+<code>npm install nodemon</code></br>
+<code>npm install telegraf</code></br>
 <hr>
 
 Detail yang diperlukan.
