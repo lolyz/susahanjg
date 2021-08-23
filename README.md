@@ -104,7 +104,7 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
     cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
 
-
+</br></br>
 <b>~ LINUX ~</b></br>
 <b>LANGKAH 1</b></br>
 - NGINX</br>
