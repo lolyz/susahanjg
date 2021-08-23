@@ -1,6 +1,6 @@
 module.exports.bothelp = `Halo, kami adalah BOT File Saver. Kami akan terus memperbarui BOT kami, jika kalian menyukainya silakan <b>Sewa BOT</b>.`;
 
-module.exports.botcommand = `<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
+module.exports.botcommand = `<b>Berikut adalah beberapa perintah dan penggunaan admin.</b>
 
 ~ Bagaimana pengguna melarang, unban dan kick dari BOT dan group.
 <b>/ban</b> userID caption jika ada.
