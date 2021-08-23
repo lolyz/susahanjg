@@ -3,11 +3,11 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 <hr>
 
 Instalasi yang dibutuhkan
-1. NGINX
-2. SSL
-3. Domain
-4. NodeJS
-5. PM2 <code>npm install -g pm2</code>
+1. NGINX</br>
+2. SSL</br>
+3. Domain</br>
+4. NodeJS</br>
+5. PM2 <code>npm install -g pm2</code></br>
 6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT</br>
 <code>npm install filsaverobot</code></br>
 <code>npm install dotenv</code></br>
@@ -69,14 +69,11 @@ Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folde
 
 <b>LANGKAH 3</b></br>
 config.js</br>
-Pemasangan ada di file config.js
+Pemasangan ada di file config.js</br>
 
-<code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.
-
-<code>PORT</code> - Port didapat dari saat anda setting nginx tadi.
-
-<code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
-
+<code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.</br>
+<code>PORT</code> - Port didapat dari saat anda setting nginx tadi.</br>
+<code>TOKEN</code> - Dapatkan Token Bot dari Bot father.</br>
 <code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).</br>
 <code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
 
@@ -84,47 +81,33 @@ Pemasangan ada di file config.js
     ADMIN1: '',
     ADMIN2: '',
 
-<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.
-
-<code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.
-
-<code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
+<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.</br>
+<code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
+<code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 <hr>
 
 Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd /namafolder pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
 <hr>
 
-<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
+<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
 
-    Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
+~ Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
+<code>/ban</code> userID caption jika ada.</br>
+<code>/banchat</code> userID (pribadi).</br>
+<code>/unban</code> userID.</br>
+<code>/unbanchat</code> userID (pribadi).</br>
+<code>/kick</code> userID.</br>
+<b>Dapatkan UserID dari saluran log.</b></br>
 
-<code>/ban</code> userID caption jika ada.
-<code>/banchat</code> userID (pribadi). 
+~ Bagaimana cara menggunakan pin dan unpin di grup.</br>
+<code>/pin</code> reply ke pesan yang mau di pin.</br>
+<code>/unpin</code> reply ke pesan yang mau di unpin.</br>
 
-<code>/unban</code> userID.
-<code>/unbanchat</code> userID (pribadi).
-
-<code>/kick</code> userID.
-
-(Dapatkan UserID dari saluran log).
-
-    Bagaimana cara menggunakan pin dan unpin di grup.
-
-<code>/pin</code> reply ke pesan yang mau di pin.
-
-<code>/unpin</code> reply ke pesan yang mau di unpin.
-
-    Bagaimana cara kirim pesan ke pengguna dari grup.
-
-<code>/send</code> pesan. kirim pesan di grup.
-
-    Bagaimana cara kirim pesan ke pengguna dari BOT.
-
-<code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.
- 
-
-<h2>Cara Menghapus File Dari Bot.</h2>
-
+~ Bagaimana cara kirim pesan ke pengguna dari grup.</br>
+<code>/send</code> pesan. kirim pesan di grup.</br>
+Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
+<code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.</br>
+<h2>Cara Menghapus File Dari Bot.</h2></br>
 
 Anda dapat menghapus file 3 cara.
 
