@@ -24,16 +24,16 @@ Instalasi yang dibutuhkan
 Detail yang diperlukan.
 
 <u>WINDOWS</u></br>
-<b>LANGKAH 1</b>
-NGINX
-Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>
-Setelah download selesai extraxt zip anda dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx".
+<b>LANGKAH 1</b></br>
+NGINX</br>
+Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>.</br>
+Setelah download selesai extraxt zip anda dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx".</br>
 
-<b>LANGKAH2</b>
-SSL
-Buat terlebih dahulu SSL dan pastikan Anda punya ip publik / domain yang terhubung ke server dan bisa diakses darimana saja.
+<b>LANGKAH2</b></br>
+SSL</br>
+Buat terlebih dahulu SSL dan pastikan Anda punya ip publik / domain yang terhubung ke server dan bisa diakses darimana saja.</br>
 
-Karena servernya Windows kami menyarankan Anda membuat ssl di web ini <a href="https://punchsalad.com/ssl-certificate-generator/">Free SSL Certificate Generator</a> dan tutorial ada disini <a href="https://punchsalad.com/ssl-certificate/install-lets-encrypt-godaddy/#chapter2">Tutorial</a>. Lewatkan pada bagian tutorial cpanel, download file yang dibutuhkan disana dan taruh di folder C:\nginx\html lalu akses tautan vertifikasi untuk mendaptkan .crt dan .key. dan simpan ke folder C:\nginx\ssl.
+Karena servernya Windows kami menyarankan Anda membuat ssl di web ini <a href="https://punchsalad.com/ssl-certificate-generator/">Free SSL Certificate Generator</a> dan tutorial ada disini <a href="https://punchsalad.com/ssl-certificate/install-lets-encrypt-godaddy/#chapter2">Tutorial</a>. Lewatkan pada bagian tutorial cpanel, download file yang dibutuhkan disana dan taruh di folder C:\nginx\html lalu akses tautan vertifikasi untuk mendaptkan .crt dan .key. dan simpan ke folder C:\nginx\ssl.</br>
 
 Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder windows dan buka file bot.conf menggunakan editor di windows.
 
