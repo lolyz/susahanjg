@@ -86,7 +86,7 @@ Pemasangan ada di file config.js</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 
 <b>LANGKAH 4</b></br>
-Pindahkan semua folder BOT</br>
+Pindahkan beberapa yang di folder BOT</br>
 Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
 - database</br>
 - config</br>
