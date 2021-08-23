@@ -87,14 +87,14 @@ Pemasangan ada di file config.js</br>
 
 <b>LANGKAH 4</b></br>
 Pindahkan semua folder BOT</br>
-Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot
-    Database</br>
-    Config</br>
-    package-lock.json</br>
-    package.json</br>
-    help.js</br>
-    config.js</br>
-    index.js</br>
+Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
+- database</br>
+- config</br>
+- package-lock.json</br>
+- package.json</br>
+- help.js</br>
+- config.js</br>
+- index.js</br>
 <hr>
 
 Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
