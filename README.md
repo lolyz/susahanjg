@@ -27,7 +27,10 @@ Detail yang diperlukan.
 <b>LANGKAH 1</b></br>
 NGINX</br>
 Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>.</br>
-Setelah download selesai extraxt zip anda dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx".</br>
+Setelah download selesai extraxt zip anda dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx". Jalankan nginxnya di cmd dengan perintah berikut
+
+
+    C:\nginx\.\nginx.exe -s start
 
 <b>LANGKAH 2</b></br>
 SSL</br>
