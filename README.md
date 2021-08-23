@@ -103,6 +103,97 @@ Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
 Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik
 
     cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
+
+
+<b>~ LINUX ~</b></br>
+<b>LANGKAH 1</b></br>
+- NGINX</br>
+
+Sebelum anda pasang BOT download dulu nginx versi linux dengan perintah.
+
+    sudo apt install nginx -y
+
+Lalu jalankan dengan perintah.
+
+    sudo systemctl enable nginx && sudo systemctl start nginx
+
+<b>LANGKAH 2</b></br>
+- SSL</br>
+
+Buat terlebih dahulu SSL dan pastikan Anda punya ip publik dan domain yang terhubung ke server dan bisa diakses darimana saja.</br>
+
+Karena servernya Linux dan tidak ingin kesulitan kami menyarankan Anda membuat ssl di web ini <a href="https://punchsalad.com/ssl-certificate-generator/">Free SSL Certificate Generator</a> dan tutorial ada disini <a href="https://punchsalad.com/ssl-certificate/install-lets-encrypt-godaddy/#chapter2">Tutorial</a>. Lewatkan pada bagian tutorial cpanel, download file yang dibutuhkan disana dan taruh di folder /var/www/html lalu akses tautan vertifikasi untuk mendaptkan .crt dan .key. dan simpan ke folder /etc/ssl.</br>
+
+
+Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder linux dan buka file bot.conf menggunakan editor di komputer Anda. Anda akan melihat kode dibawah, ganti tulisan <b>MY_DOMAIN</b> dengan domain Anda, karena kami sudah menempatkan PATH folder ssl maka tinggal Anda taruh saja sesuai dengan PATH yang kami tulis.
+
+
+    server {
+        listen 80;
+        server_name MY_DOMAIN;
+        return 301 https://$server_name$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name MY_DOMAIN;
+
+        error_log /etc/nginx/bot.error.log error;
+
+        ssl_session_timeout 5m;
+
+        ssl_certificate /etc/ssl/ca-bundle.crt;
+        ssl_certificate_key /etc/ssl/private-key.key;
+
+        location / {
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_pass http://localhost:8443;
+        }
+    }
+
+
+Lalu jalankan dengan perintah.
+    
+    systemctl restart nginx
+
+<b>LANGKAH 3</b></br>
+- config.js</br>
+
+Pemasangan ada di file config.js</br>
+
+<code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.</br>
+<code>PORT</code> - Port didapat dari saat anda setting nginx tadi.</br>
+<code>TOKEN</code> - Dapatkan Token Bot dari Bot father.</br>
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).</br>
+<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
+
+    ADMIN: '',
+    ADMIN1: '',
+    ADMIN2: '',
+
+<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@' dan harus huruf kecil.</br>
+<code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
+<code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
+
+<b>LANGKAH 4</b></br>
+Pindahkan beberapa yang di folder BOT</br>
+Pastikan ini pindah semua ke PATH /var/www/html/hooks/bot</br>
+- database</br>
+- config</br>
+- package-lock.json</br>
+- package.json</br>
+- help.js</br>
+- config.js</br>
+- index.js</br>
+<hr>
+
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik
+
+    cd /var/www/html/hooks/bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
