@@ -65,7 +65,7 @@ Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder windo
 
 Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folder C:\nginx\conf lalu di cmd ketik ini.
     
-    C:\nginx\.nginx.exe -s reload
+    C:\nginx\.\nginx.exe -s reload
 
 <b>LANGKAH 3</b></br>
 config.js</br>
