@@ -1,5 +1,5 @@
 # RatuFileSaver2
-Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup.
+Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara group.
 <hr>
 
 Instalasi yang dibutuhkan
@@ -196,7 +196,7 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
 
-~ Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
+~ Bagaimana pengguna melarang, unban dan kick dari BOT dan group.
 <code>/ban</code> userID caption jika ada.</br>
 <code>/banchat</code> userID (pribadi).</br>
 <code>/unban</code> userID.</br>
@@ -204,12 +204,12 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 <code>/kick</code> userID.</br>
 <b>Dapatkan UserID dari saluran log.</b></br>
 
-~ Bagaimana cara menggunakan pin dan unpin di grup.</br>
+~ Bagaimana cara menggunakan pin dan unpin di group.</br>
 <code>/pin</code> reply ke pesan yang mau di pin.</br>
 <code>/unpin</code> reply ke pesan yang mau di unpin.</br>
 
-~ Bagaimana cara kirim pesan ke pengguna dari grup.</br>
-<code>/send</code> pesan. kirim pesan di grup.</br>
+~ Bagaimana cara kirim pesan ke pengguna dari group.</br>
+<code>/send</code> pesan. kirim pesan di group.</br>
 
 ~ Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
 <code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.</br>
@@ -226,9 +226,9 @@ Anda dapat menghapus file 3 cara.</br>
 <code>/rem</code> file_id.</br>
 <b>Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.</b></br>
 
-~ Hapus file grup dengan mediaId.</br>
+~ Hapus file group dengan mediaId.</br>
 <code>/remgrp</code> mediaId.</br>
-<b> Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).</b></br>
+<b> Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log).</b></br>
 
 ~ Hapus semua file Kirim oleh pengguna.</br>
 <code>/remall</code> userID.</br>
@@ -254,18 +254,18 @@ Anda dapat menghapus file 3 cara.</br>
 //Update
 
 HISTORY 8
-1. Perbaikan penulisan URL gabung grup/channel tinggal tulis name-https://t.me/test
+1. Perbaikan penulisan URL gabung group/channel tinggal tulis name-https://t.me/test
 
 HISTORY 7
-1. Perbaikan dalam list grup untuk melakukan perintah didalam grup.
-2. Kirim media secara grup.
-3. Hapus media secara grup.
+1. Perbaikan dalam list group untuk melakukan perintah didalam group.
+2. Kirim media secara group.
+3. Hapus media secara group.
 
 HISTORY 6
 1. Kirim pesan ke pengguna melalui BOT.
 
 HISTORY 5
-1. Kirim pesan ke pengguna melalui grup.
+1. Kirim pesan ke pengguna melalui group.
 
 HISTORY 4
 1. BOT mendukung kick, ban, unban dan ada pesan pribadi.
@@ -278,11 +278,11 @@ HISTORY 3
 HISTORY 2
 1. Function teks disederhanakan.
 2. Mendeteksi jika belum ada nama akun akan dikosongkan.
-3. Admin bisa menggunakan BOT tanpa masuk channel/grup.
+3. Admin bisa menggunakan BOT tanpa masuk channel/group.
 4. Ada log channel untuk mengetahui siapa yang ngirim dan apa deskripsi filenya.
 
 HISTORY 1
-1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js dan bot harus jadi admin di grup/channel.
+1. Ada join channel/group terlebih dahulu saat start, pastikan id channel/group di ganti pada index.js dan bot harus jadi admin di group/channel.
 2. Terdapat penambahan untuk menghilangkan null supaya tidak terlihat saat tampil.
 3. Ada get ID untuk cek ID akun Anda.
-4. Ada pesan bot belum dimasukkan ke channel/grup tujuan.
+4. Ada pesan bot belum dimasukkan ke channel/group tujuan.
