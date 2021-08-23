@@ -70,7 +70,13 @@ Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folde
     C:\nginx\.nginx.exe -s reload
 
 
+<b>LANGKAH 3</b></br>
+config.js</br>
 Pemasangan ada di file config.js
+
+<code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.
+
+<code>PORT</code> - POrt didapat dari saat anda setting nginx tadi.
 
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
 
