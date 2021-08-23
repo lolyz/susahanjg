@@ -84,9 +84,6 @@ Pemasangan ada di file config.js</br>
 <code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.</br>
 <code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
-<hr>
-
-Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
 
 <b>LANGKAH 4</b></br>
 Pindahkan semua folder BOT</br>
@@ -98,6 +95,9 @@ Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot
     help.js</br>
     config.js</br>
     index.js</br>
+<hr>
+
+Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik <code>cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"</code>
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
