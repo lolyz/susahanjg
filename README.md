@@ -154,7 +154,7 @@ Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder linux
     }
 
 
-Lalu jalankan dengan perintah dan jangan lupa bot.conf tadi sudah pindah ke folder /etc/nginx/
+Lalu jalankan dengan perintah ini dan jangan lupa bot.conf tadi sudah pindah ke folder /etc/nginx/
     
     systemctl restart nginx
 
