@@ -21,6 +21,7 @@ Detail yang diperlukan.
 <b>~ WINDOWS ~</b></br>
 <b>LANGKAH 1</b></br>
 - NGINX</br>
+
 Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>.</br>
 Setelah download selesai extraxt zip dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx". Jalankan nginxnya di cmd dengan perintah berikut.
 
@@ -28,6 +29,7 @@ Setelah download selesai extraxt zip dan pindahkan ke folder C:\ dan jangan lupa
 
 <b>LANGKAH 2</b></br>
 - SSL</br>
+
 Buat terlebih dahulu SSL dan pastikan Anda punya ip publik dan domain yang terhubung ke server dan bisa diakses darimana saja.</br>
 
 Karena servernya Windows kami menyarankan Anda membuat ssl di web ini <a href="https://punchsalad.com/ssl-certificate-generator/">Free SSL Certificate Generator</a> dan tutorial ada disini <a href="https://punchsalad.com/ssl-certificate/install-lets-encrypt-godaddy/#chapter2">Tutorial</a>. Lewatkan pada bagian tutorial cpanel, download file yang dibutuhkan disana dan taruh di folder C:\nginx\html lalu akses tautan vertifikasi untuk mendaptkan .crt dan .key. dan simpan ke folder C:\nginx\ssl.</br>
@@ -69,6 +71,7 @@ Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folde
 
 <b>LANGKAH 3</b></br>
 ~ config.js</br>
+
 Pemasangan ada di file config.js</br>
 
 <code>DOMAIN</code> - Domain didapat dari saat anda setting nginx tadi.</br>
