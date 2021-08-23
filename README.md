@@ -90,7 +90,6 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
-
 ~ Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
 <code>/ban</code> userID caption jika ada.</br>
 <code>/banchat</code> userID (pribadi).</br>
