@@ -2,6 +2,12 @@ module.exports = {
         //Token bot disediakan oleh  @botfather
     TOKEN: '',
 
+    //Masukkan domain / ip yang telah disetting di nginx
+    DOMAIN: '',
+
+    //Masukkan port yang telah disetting di nginx
+    PORT: '',
+
     //Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name: mediaFile and collection name: fileBackup
     DB_URL: '',
 
