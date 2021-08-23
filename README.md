@@ -24,7 +24,6 @@ Detail yang diperlukan.
 Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>.</br>
 Setelah download selesai extraxt zip dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx". Jalankan nginxnya di cmd dengan perintah berikut.
 
-
     C:\nginx\.\nginx.exe -s start
 
 <b>LANGKAH 2</b></br>
@@ -65,10 +64,8 @@ Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder windo
 
 
 Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folder C:\nginx\conf lalu di cmd ketik ini.
-
     
     C:\nginx\.nginx.exe -s reload
-
 
 <b>LANGKAH 3</b></br>
 config.js</br>
@@ -99,7 +96,6 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
 
-
     Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
 
 <code>/ban</code> userID caption jika ada.
@@ -112,18 +108,15 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 (Dapatkan UserID dari saluran log).
 
-
     Bagaimana cara menggunakan pin dan unpin di grup.
 
 <code>/pin</code> reply ke pesan yang mau di pin.
 
 <code>/unpin</code> reply ke pesan yang mau di unpin.
 
-
     Bagaimana cara kirim pesan ke pengguna dari grup.
 
 <code>/send</code> pesan. kirim pesan di grup.
-
 
     Bagaimana cara kirim pesan ke pengguna dari BOT.
 
@@ -151,7 +144,7 @@ Anda dapat menghapus file 3 cara.
 
     Hapus file grup dengan mediaId.
 
-<code>/remgrp</code> grp.
+<code>/remgrp</code> mediaId.
 
 (Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).
 
