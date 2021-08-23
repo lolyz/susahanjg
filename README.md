@@ -16,8 +16,6 @@ Instalasi yang dibutuhkan
 <code>npm install telegraf</code></br>
 <hr>
 
-Detail yang diperlukan.
-
 <b>~ WINDOWS ~</b></br>
 <b>LANGKAH 1</b></br>
 - NGINX</br>
