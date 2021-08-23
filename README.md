@@ -101,6 +101,7 @@ Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
 <hr>
 
 Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di folder bot, kalau belum ketik
+
     cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
 <hr>
 
