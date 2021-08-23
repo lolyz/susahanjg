@@ -8,7 +8,7 @@ Instalasi yang dibutuhkan
 3. Domain</br>
 4. NodeJS</br>
 5. PM2 <code>npm install -g pm2</code></br>
-6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT</br>
+6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan di folder BOT</br>
 <code>npm install filsaverobot</code></br>
 <code>npm install dotenv</code></br>
 <code>npm install mongodb</code></br>
@@ -154,7 +154,7 @@ Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder linux
     }
 
 
-Lalu jalankan dengan perintah.
+Lalu jalankan dengan perintah dan jangan lupa bot.conf tadi sudah pindah ke folder /etc/nginx/
     
     systemctl restart nginx
 
