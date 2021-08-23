@@ -90,6 +90,14 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 <b>LANGKAH 4</b></br>
 Pindahkan semua folder BOT</br>
+Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot
+    Database</br>
+    Config</br>
+    package-lock.json</br>
+    package.json</br>
+    help.js</br>
+    config.js</br>
+    index.js</br>
 <hr>
 
 <h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
