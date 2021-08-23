@@ -70,7 +70,7 @@ Jika sudah di ganti pindahkan semua isi yang ada di folder windows tadi ke folde
     C:\nginx\.\nginx.exe -s reload
 
 <b>LANGKAH 3</b></br>
-~ config.js</br>
+- config.js</br>
 
 Pemasangan ada di file config.js</br>
 
