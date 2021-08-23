@@ -2145,4 +2145,10 @@ bot.on('inline_query',async(ctx)=>{
     } 
 })
  
-bot.launch()
+bot.launch({
+  webhook: {
+    domain: 'gobot.my.id',
+    port: 8443
+    //host:localhost
+  }
+})
