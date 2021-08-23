@@ -81,7 +81,7 @@ Pemasangan ada di file config.js</br>
     ADMIN1: '',
     ADMIN2: '',
 
-<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.</br>
+<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@' dan harus huruf kecil.</br>
 <code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - RatuMediaFile ,nama collection - RatuFileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "RatuMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 
