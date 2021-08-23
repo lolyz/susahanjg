@@ -3,9 +3,12 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 <hr>
 
 Instalasi yang dibutuhkan
-1. NodeJS
-2. PM2 <code>npm install -g pm2</code>
-3. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
+1. NGINX
+2. SSL
+3. Domain
+4. NodeJS
+5. PM2 <code>npm install -g pm2</code>
+6. NPM yang dibutuhkan. Jangan lupa pasang di tempat package.json disimpan difolder BOT
 
 <code>npm install filsaverobot</code>
     
@@ -19,6 +22,50 @@ Instalasi yang dibutuhkan
 <hr>
 
 Detail yang diperlukan.
+
+<u>WINDOWS</u>
+<b>LANGKAH 1</b>
+NGINX
+Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>
+Setelah download selesai extraxt zip anda dan pindahkan ke folder C:\ dan jangan lupa rename nama folder nginxnya menjadi "nginx".
+
+<b>LANGKAH2</b>
+SSL
+Buat terlebih dahulu SSL dan pastikan Anda punya ip publik / domain yang terhubung ke server dan bisa diakses darimana saja.
+
+Karena servernya Windows kami menyarankan Anda membuat ssl di web ini <a href="https://punchsalad.com/ssl-certificate-generator/">Free SSL Certificate Generator</a> dan tutorial ada disini <a href="https://punchsalad.com/ssl-certificate/install-lets-encrypt-godaddy/#chapter2">Tutorial</a>. Lewatkan pada bagian tutorial cpanel, download file yang dibutuhkan disana dan taruh di folder C:\nginx\html lalu akses tautan vertifikasi untuk mendaptkan .crt dan .key. dan simpan ke folder C:\nginx\ssl.
+
+Buka file di folder nginx-conf yang sudah Anda unduh lalu buka lagi folder windows dan buka file bot.conf menggunakan editor di windows.
+
+
+    server {
+        listen 80;
+        server_name MY_DOMAIN;
+        return 301 https://$server_name$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name MY_DOMAIN;
+
+        error_log C:/nginx/bot.error.log error;
+
+        ssl_session_timeout 5m;
+
+        ssl_certificate C:/nginx/html/ssl/ca-bundle.crt;
+        ssl_certificate_key C:/nginx/html/ssl/private-key.key;
+
+        location / {
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_pass http://localhost:8443;
+        }
+    }
+
+
 Pemasangan ada di file config.js
 
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
