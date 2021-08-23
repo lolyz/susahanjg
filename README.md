@@ -228,7 +228,7 @@ Anda dapat menghapus file 3 cara.</br>
 
 ~ Hapus file group dengan mediaId.</br>
 <code>/remgrp</code> mediaId.</br>
-<b> Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log).</b></br>
+<b>Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log).</b></br>
 
 ~ Hapus semua file Kirim oleh pengguna.</br>
 <code>/remall</code> userID.</br>
