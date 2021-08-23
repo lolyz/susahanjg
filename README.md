@@ -23,7 +23,7 @@ Instalasi yang dibutuhkan
 
 Detail yang diperlukan.
 
-<u>WINDOWS</u>
+<u>WINDOWS</u></br>
 <b>LANGKAH 1</b>
 NGINX
 Sebelum anda pasang BOT download dulu nginx versi windows <a href="https://nginx.org/en/download.html">di sini</a>
