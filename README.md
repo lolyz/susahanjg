@@ -105,11 +105,11 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 ~ Bagaimana cara kirim pesan ke pengguna dari grup.</br>
 <code>/send</code> pesan. kirim pesan di grup.</br>
-Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
+
+~ Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
 <code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.</br>
 <h2>Cara Menghapus File Dari Bot.</h2></br>
-
-Anda dapat menghapus file 3 cara.
+Anda dapat menghapus file 3 cara.</br>
 
   ⚫ Hapus file individual dengan file_id.
 
@@ -117,46 +117,31 @@ Anda dapat menghapus file 3 cara.
 
   ⚫ Hapus semua file Kirim ke BOT.
 
+~ Hapus file individual dengan file_id.</br>
+<code>/rem</code> file_id.</br>
+<b>Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.</b></br>
 
-    Hapus file individual dengan file_id.
+~ Hapus file grup dengan mediaId.</br>
+<code>/remgrp</code> mediaId.</br>
+<b> Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).</b></br>
 
-<code>/rem</code> file_id.
+~ Hapus semua file Kirim oleh pengguna.</br>
+<code>/remall</code> userID.</br>
+<b>Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).</b>
 
-(Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log).
-
-
-    Hapus file grup dengan mediaId.
-
-<code>/remgrp</code> mediaId.
-
-(Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).
-
-
-    Hapus semua file Kirim oleh pengguna.
-
-<code>/remall</code> userID.
-
-(Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).
-
-
-    Hapus semua file Kirim ke B0T.
-
-<code>/clear</code>
-
-(Ini akan menghapus semua file yang dikirim ke BOT secara permanen).
+~ Hapus semua file Kirim ke B0T.</br>
+<code>/clear</code></br>
+<b>Ini akan menghapus semua file yang dikirim ke BOT secara permanen).</b></br>
 
 <h2>Kirim pesan ke pengguna</h2>
 
-<code>/broadcast</code> Pesan Anda akan dikirim ke pengguna.
-
-(Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).
-
+<code>/broadcast</code> Pesan Anda akan dikirim ke pengguna.</br>
+<b>Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).</b>
 
 <h2>Cara Mengetahui Total Pengguna BOT.</h2>
 
-<code>/stats</code>
-
-(Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil).
+<code>/stats</code></br>
+<b>Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil.</b>
 <hr>
 
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai dukungan.</b>
