@@ -19,8 +19,8 @@ module.exports.botcommand = `<b>Berikut adalah beberapa perintah dan penggunaan 
 
 ~ Bagaimana cara kirim pesan ke pengguna dari BOT.
 <b>/sendchat</b> userID pesan. kirim ke pengguna melalui BOT.
-<b>Cara Menghapus File Dari Bot.</b>
 
+<b>Cara Menghapus File Dari Bot.</b>
 Anda dapat menghapus file 4 cara.
   ⚫ Hapus file individual dengan file_id.
   ⚫ Hapus file group dengan mediaId.
@@ -44,12 +44,10 @@ Anda dapat menghapus file 4 cara.
 <b>Ini akan menghapus semua file yang dikirim ke BOT secara permanen).</b>
 
 <b>Kirim pesan ke pengguna</b>
-
 <b>/broadcast</b> Pesan Anda akan dikirim ke pengguna.
 <b>Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).</b>
 
 <b>Cara Mengetahui Total Pengguna BOT.</b>
-
 <b>/stats</b>
 <b>Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil.</b>
 `;
