@@ -213,8 +213,8 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 
 ~ Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
 <code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.</br>
-<h2>Cara Menghapus File Dari Bot.</h2>
 
+<h2>Cara Menghapus File Dari Bot.</h2>
 Anda dapat menghapus file 4 cara.</br>
 
   ⚫ Hapus file individual dengan file_id.
@@ -224,6 +224,7 @@ Anda dapat menghapus file 4 cara.</br>
   ⚫ Hapus semua file Kirim oleh pengguna.
   
   ⚫ Hapus semua file Kirim ke BOT.
+
 
 ~ Hapus file individual dengan file_id.</br>
 <code>/rem</code> file_id.</br>
