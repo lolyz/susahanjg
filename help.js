@@ -20,12 +20,11 @@ module.exports.botcommand = `<b>Berikut adalah beberapa perintah dan penggunaan 
 ~ Bagaimana cara kirim pesan ke pengguna dari BOT.
 <b>/sendchat</b> userID pesan. kirim ke pengguna melalui BOT.
 <b>Cara Menghapus File Dari Bot.</b>
-Anda dapat menghapus file 3 cara.
 
+Anda dapat menghapus file 4 cara.
   ⚫ Hapus file individual dengan file_id.
-
+  ⚫ Hapus file group dengan mediaId.
   ⚫ Hapus semua file Kirim oleh pengguna.
-
   ⚫ Hapus semua file Kirim ke BOT.
 
 ~ Hapus file individual dengan file_id.
