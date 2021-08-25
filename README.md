@@ -217,11 +217,8 @@ Jangan lupa gunakan perintah ini untuk jalankan BOTnya. Pastikan sudah ada di fo
 Anda dapat menghapus file 4 cara.</br>
 
   ⚫ Hapus file individual dengan file_id.
-
   ⚫ Hapus file group dengan mediaId.
-
   ⚫ Hapus semua file Kirim oleh pengguna.
-
   ⚫ Hapus semua file Kirim ke BOT.
 
 ~ Hapus file individual dengan file_id.</br>
