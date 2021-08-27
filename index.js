@@ -536,7 +536,7 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
@@ -555,7 +555,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -579,7 +579,7 @@ bot.command('ban',async(ctx)=>{
                             const command = words.shift().slice(1);
                             const userId = words.shift();
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -598,7 +598,7 @@ bot.command('ban',async(ctx)=>{
                         const words = str.split(/ +/g);
                         const command = words.shift().slice(1);
                         const caption = words.join(" ");
-                        const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                        const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                         await bot.telegram.callApi('banChatMember', {
                         chat_id: ctx.message.chat.id,
@@ -621,7 +621,7 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
     
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
@@ -640,7 +640,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
     
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
