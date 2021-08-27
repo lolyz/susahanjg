@@ -53,10 +53,26 @@ Anda dapat menghapus file 4 cara.
 `;
 
 module.exports.sewabot = `<u>Anda butuh BOT File Saver, silakan cek harga dibawah</u>
-\n<u>HARGA</u>\nRp 60.000 - BULAN
-\n<u>KEUNTUNGAN</u>\n1. Menggunanakan database dengan kapasitas unmetered.\n2. Menggunakan server terbaik di Singapura.\n3. Ketika server gangguan BOT bisa jalan otomatis.\n4. Jika ada masalah pada BOT team kami siap bantu.
-\n<u>Fitur</u>\n1. Bisa ban, unban, kick di grup maupun chat BOT.\n2. Bisa send chat ke pengguna di grup maupun chat BOT.\n3. Ada statistik.\n4. Bisa hapus media satu persatu.\n5. Bisa hapus media secara album.\n6. Bisa kirim media satu persatu atau secara album.\n7. Ada join channel saat belum gabung atau saat maksa ngirim media.\n8. Jika BOT belum masuk Group/Channel akan ada informasi BOT belum masuk Group/Channel.
-\nSilakan hubungi <a href="https://t.me/sorahearts">Team Support</a> untuk mendapatkan layanan ini.
+
+<u>HARGA</u>\nRp 60.000 - BULAN
+
+<u>KEUNTUNGAN</u>
+1. Menggunanakan database dengan kapasitas unmetered.
+2. Menggunakan server terbaik.
+3. Ketika server gangguan BOT bisa jalan otomatis.
+4. Jika ada masalah pada BOT team kami siap bantu.
+
+<u>Fitur</u>
+1. Bisa ban, unban, kick di grup maupun chat BOT.
+2. Bisa send chat ke pengguna di grup maupun chat BOT.
+3. Ada statistik.
+4. Bisa hapus media satu persatu.
+5. Bisa hapus media secara album.
+6. Bisa kirim media satu persatu atau secara album.
+7. Ada join channel saat belum gabung atau saat maksa ngirim media.
+8. Jika BOT belum masuk Group/Channel akan ada informasi BOT belum masuk Group/Channel.
+
+Silakan hubungi <a href="https://t.me/sorahearts">Team Support</a> untuk mendapatkan layanan ini.
 `;
 
 //module.exports.install = `Silakan pilih cara install nya, bisa Heroku dan bisa komputer sendiri.`;
