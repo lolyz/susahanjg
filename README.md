@@ -1,5 +1,5 @@
 # RatuFileSaver2
-Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara group. <b>Anda hanya bisa kirim maksimal 10 media dalam 1 menit</b>
+Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara group.
 <hr>
 
 Instalasi yang dibutuhkan
@@ -14,7 +14,6 @@ Instalasi yang dibutuhkan
 <code>npm install mongodb</code></br>
 <code>npm install nodemon</code></br>
 <code>npm install telegraf</code></br>
-<code>npm install telegraf-ratelimit</code></br>
 <hr>
 
 <b>~ WINDOWS ~</b></br>
