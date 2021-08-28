@@ -1,5 +1,5 @@
 # RatuFileSaver2
-Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara group.
+Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara group. <b>Anda hanya bisa kirim maksimal 10 media dalam 1 menit</b>
 <hr>
 
 Instalasi yang dibutuhkan
