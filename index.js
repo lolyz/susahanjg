@@ -1,5 +1,33 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
+const rateLimit = require('telegraf-ratelimit')
+
+//limit send media
+const documentLimitConfig = {
+    window: 3000,
+    limit: 10,
+    keyGenerator: function (ctx) {
+      return ctx.chat.id
+    },
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+}
+const videoLimitConfig = {
+    window: 3000,
+    limit: 10,
+    keyGenerator: function (ctx) {
+      return ctx.chat.id
+    },
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+}
+const photoLimitConfig = {
+    window: 3000,
+    limit: 10,
+    keyGenerator: function (ctx) {
+      return ctx.chat.id
+    },
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+}
+
 const config = require('./config.js')
 const bot = new Telegraf(config.TOKEN)
 
@@ -1105,7 +1133,7 @@ bot.command('unbanchat', (ctx) => {
 })
 
 //saving documents to db and generating link
-bot.on('document', async (ctx) => {
+bot.on('document', rateLimit(documentLimitConfig), async (ctx) => {
     if(ctx.chat.type == 'private') {
         document = ctx.message.document
         //console.log(ctx);
@@ -1258,7 +1286,7 @@ bot.on('document', async (ctx) => {
             //console.log(member3);
             if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
                 if(ctx.chat.type == 'private') {
-                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+                    const profile6 = bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile6 || profile6.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
@@ -1438,7 +1466,7 @@ bot.on('document', async (ctx) => {
 })
 
 //video files
-bot.on('video', async (ctx) => {
+bot.on('video', rateLimit(videoLimitConfig), async(ctx) => {
     if(ctx.chat.type == 'private') {
         video = ctx.message.video
         //console.log(ctx);
@@ -1591,7 +1619,7 @@ bot.on('video', async (ctx) => {
             //console.log(member3);
             if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
                 if(ctx.chat.type == 'private') {
-                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+                    const profile6 = bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile6 || profile6.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
@@ -1771,7 +1799,7 @@ bot.on('video', async (ctx) => {
 })
 
 //photo files
-bot.on('photo', async (ctx) => {
+bot.on('photo', rateLimit(photoLimitConfig), async(ctx) => {
     
     if(ctx.chat.type == 'private') {
         photo = ctx.message.photo
@@ -1925,7 +1953,7 @@ bot.on('photo', async (ctx) => {
             //console.log(member3);
             if(member3.status == 'restricted' || member3.status == 'left' || member3.status == 'kicked'){
                 if(ctx.chat.type == 'private') {
-                    const profile6 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+                    const profile6 = bot.telegram.getUserProfilePhotos(ctx.from.id)
                     if(!profile6 || profile6.total_count == 0)
                         return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
