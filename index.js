@@ -2121,8 +2121,7 @@ bot.on('inline_query',async(ctx)=>{
 //nginx config
 bot.launch({
     webhook:{
-       domain:config.domain,
-        port:config.PORT
- 
+       domain:`${config.domain}`,
+       port:`${config.PORT}`
     }
 })
