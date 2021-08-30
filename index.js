@@ -394,11 +394,11 @@ bot.command('reload',async(ctx)=>{
     }
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if(memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
-            ctx.reply('BOT dimulai ulang')
+            ctx.reply('Bot dimulai ulang')
             saver.saveGroup(group)
         }
         if(ctx.from.username == 'GroupAnonymousBot'){
-            ctx.reply('BOT dimulai ulang')
+            ctx.reply('Bot dimulai ulang')
             saver.saveGroup(group)
         }
     }
