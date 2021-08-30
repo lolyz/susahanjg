@@ -327,65 +327,12 @@ bot.action('HELP',(ctx)=>{
         disable_web_page_preview: true,
         reply_markup:{
             inline_keyboard: [
-                [{text:'💿 Sewa BOT',callback_data:'SEWABOT'},{text:'🪒 Perintah',callback_data:'COMM'}],
+                [{text:'🪒 Perintah',callback_data:'COMM'}],
                 [{text:'Kembali',callback_data:'STARTUP'}]
             ]
         }
     })
 })
-
-bot.action('SEWABOT',(ctx)=>{
-    ctx.deleteMessage()
-    ctx.reply(`${helpcommand.sewabot}`,{
-        parse_mode: 'HTML',
-        disable_web_page_preview: true,
-        reply_markup:{
-            inline_keyboard: [
-                [{text:'Kembali',callback_data:'HELP'}]
-            ]
-        }
-    })
-})
-
-//bot.action('INS',(ctx)=>{
-//    ctx.deleteMessage()
-//    ctx.reply(`${helpcommand.install}`,{
-//        parse_mode: 'HTML',
-//        disable_web_page_preview: true,
-//        reply_markup:{
-//            inline_keyboard: [
-//                [{text:'💿 Heroku',callback_data:'INSTALL1'},{text:'💿 Komputer',callback_data:'INSTALL2'}],
-//                [{text:'Kembali',callback_data:'HELP'}]
-//            ]
-//        }
-//    })
-//})
-
-//bot.action('INSTALL1',(ctx)=>{
-//    ctx.deleteMessage()
-//    ctx.reply(`${helpcommand.botinstall1}`,{
-//        parse_mode: 'HTML',
-//        disable_web_page_preview: true,
-//        reply_markup:{
-//            inline_keyboard: [
-//                [{text:'Kembali',callback_data:'HELP'}]
-//            ]
-//        }
-//    })
-//})
-
-//bot.action('INSTALL2',(ctx)=>{
-//    ctx.deleteMessage()
-//    ctx.reply(`${helpcommand.botinstall2}`,{
-//        parse_mode: 'HTML',
-//        disable_web_page_preview: true,
-//        reply_markup:{
-//            inline_keyboard: [
-//                [{text:'Kembali',callback_data:'HELP'}]
-//            ]
-//        }
-//    })
-//})
 
 bot.action('COMM',(ctx)=>{
     ctx.deleteMessage()
