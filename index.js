@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf(process.env.TOKEN)
+const config = require('./config.js')
+const bot = new Telegraf(config.TOKEN)
 
 process.env.TZ = "Asia/Jakarta";
 
@@ -17,7 +18,7 @@ db.connect((err) => {
 })
 
 //ID Channel/Group
-const channelId = `${process.env.CHANNELJOIN}`;
+const channelId = `${config.CHANNELJOIN}`;
 
 function today(ctx){
     var today = new Date();
@@ -55,13 +56,13 @@ function fromid(ctx){
     return ctx.from.id ? `[${ctx.from.id}]` : "";
 }
 function captionbuild(ctx){
-    return `${process.env.CAPTIONLINK}`;
+    return `${config.CAPTIONLINK}`;
 }
 function welcomejoin(ctx){
-    return `${process.env.WELCOMEJOINBOT}\n\n${today(ctx)}`;
+    return `${config.WELCOMEJOINBOT}\n\n${today(ctx)}`;
 }
 function messagewelcome(ctx){
-    return `${process.env.MESSAGEWELCOMEBOT}\n\n${today(ctx)}`;
+    return `${config.MESSAGEWELCOMEBOT}\n\n${today(ctx)}`;
 }
 function messagebanned(ctx){
     return `⚠ ANDA DIBLOKIR KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.`;
@@ -76,7 +77,7 @@ function documentation(ctx){
     return `Bot di buat menggunakan \n<b>Program:</b> Node JS \n<b>API:</b> <a href='https://bot.js.org/'>Telegraf</a>`;
 }
 
-const url2 = process.env.LINKCHANNEL.split(/[\,-]+/);
+const url2 = config.LINKCHANNEL.split(/[\,-]+/);
 const url3 = url2[0];
 const url4 = url2[1];
 
@@ -107,7 +108,7 @@ bot.start(async(ctx)=>{
             first_name:ctx.from.first_name,
             userId:ctx.from.id
         }
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             //welcoming message on /start and ifthere is a query available we can send files
             if(length == 1){
                 const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
@@ -864,7 +865,7 @@ bot.command('rem', (ctx) => {
         msgArray.shift()
         let text = msgArray.join(' ')
         //console.log(text);
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeFile(text)
             ctx.reply('✅ 1 media dihapus berhasil')
         }
@@ -880,7 +881,7 @@ bot.command('remgrp', (ctx) => {
         msgArray.shift()
         let text = msgArray.join(' ')
         //console.log(text);
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeFileMedia(text)
             ctx.reply('✅ Grup dihapus berhasil')
         }
@@ -891,7 +892,7 @@ bot.command('remgrp', (ctx) => {
 bot.command('clear',(ctx)=>{
 
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.deleteCollection()
             ctx.reply('✅ Semua media dihapus berhasil')
         }
@@ -908,7 +909,7 @@ bot.command('remall', (ctx) => {
         let text = msgArray.join(' ')
         //console.log(text);
         let id = parseInt(text)
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             saver.removeUserFile(id)
             ctx.reply('✅ Hapus semua media pada pengguna berhasil')
         }
@@ -942,7 +943,7 @@ bot.command('sendchat',async(ctx)=>{
         }
 
         if(ctx.chat.type == 'private') {
-            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
                 const str = ctx.message.text;
                 const words = str.split(/ +/g);
                 const command = words.shift().slice(1);
@@ -999,7 +1000,7 @@ bot.command('broadcast',async(ctx)=>{
                 })
 
             }
-            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
                 broadcast(text)
                 ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama).')
 
@@ -1024,7 +1025,7 @@ bot.command('banchat', (ctx) => {
         }
 
         if(ctx.chat.type == 'private') {
-            if(ctx.from.id == process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == config.ADMIN|| ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
                 saver.banUser(userId).then((res) => {
                     ctx.reply('❌ Dibanned')
                 })
@@ -1047,7 +1048,7 @@ bot.command('unbanchat', (ctx) => {
         }
 
         if(ctx.chat.type == 'private') {
-            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
                 saver.unBan(userId).then((res) => {
                     ctx.reply('✅ Selesai')
                 })
@@ -1116,45 +1117,45 @@ bot.on('document', async (ctx) => {
         }
     }
   
-    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
         if(ctx.message.media_group_id == undefined){
             if(document.file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails1)
-                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails2)
-                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1163,40 +1164,40 @@ bot.on('document', async (ctx) => {
             if(document.file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails3)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails4)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithDocument(document.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1296,40 +1297,40 @@ bot.on('document', async (ctx) => {
                             if(document.file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails1)
-                                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails2)
-                                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                                        ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Document disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -1338,40 +1339,40 @@ bot.on('document', async (ctx) => {
                             if(document.file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails3)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails4)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithDocument(document.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -1448,45 +1449,45 @@ bot.on('video', async(ctx) => {
         }
     }
   
-    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
         if(ctx.message.media_group_id == undefined){
             if(video.file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails1)
-                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails2)
-                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1495,40 +1496,40 @@ bot.on('video', async(ctx) => {
             if(video.file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails3)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails4)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithVideo(video.file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1628,40 +1629,40 @@ bot.on('video', async(ctx) => {
                             if(video.file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails1)
-                                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+                                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails2)
-                                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+                                        ctx.reply(`✔️ Video disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Video disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -1670,40 +1671,40 @@ bot.on('video', async(ctx) => {
                             if(video.file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails3)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails4)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithVideo(video.file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -1780,45 +1781,45 @@ bot.on('photo', async(ctx) => {
         }
     }
 
-    if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
         if(ctx.message.media_group_id == undefined){
             if(photo[1].file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails1)
-                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
+                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails2)
-                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
+                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)
                         return ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1827,40 +1828,40 @@ bot.on('photo', async(ctx) => {
             if(photo[1].file_name == undefined){
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails3)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
             }else{
                 if(ctx.chat.type == 'private') {
                         saver.saveFile(fileDetails4)
-                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
                             reply_to_message_id: ctx.message.message_id
                         })
                     if(ctx.message.caption == undefined)                   
                         return ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithPhoto(photo[1].file_id, {
-                            chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                            chat_id: config.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                             parse_mode:'HTML'
                         })
                 }
@@ -1960,40 +1961,40 @@ bot.on('photo', async(ctx) => {
                             if(photo[1].file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails1)
-                                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
+                                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails1.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails2)
-                                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
+                                        ctx.reply(`✔️ Photo disimpan \n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)
                                         return ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Photo disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails2.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -2002,40 +2003,40 @@ bot.on('photo', async(ctx) => {
                             if(photo[1].file_name == undefined){
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails3)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails3.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
                             }else{
                                 if(ctx.chat.type == 'private') {
                                         saver.saveFile(fileDetails4)
-                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
                                             parse_mode: 'HTML',
                                             disable_web_page_preview: true,
                                             reply_to_message_id: ctx.message.message_id
                                         })
                                     if(ctx.message.caption == undefined)                   
                                         return ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                         ctx.replyWithPhoto(photo[1].file_id, {
-                                            chat_id: process.env.LOG_CHANNEL,
-                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
+                                            chat_id: config.LOG_CHANNEL,
+                                            caption: `${ctx.message.caption}\n\n✔️ Grup disimpan \n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${fileDetails4.file_name}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${config.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${config.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,
                                             parse_mode:'HTML'
                                         })
                                 }
@@ -2054,25 +2055,25 @@ bot.on('photo', async(ctx) => {
 
 bot.command('stats',async(ctx)=>{
     stats = await saver.getUser().then((res)=>{
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             ctx.reply(`📊 Total pengguna: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
     stats = await saver.getMedia().then((res)=>{
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             ctx.reply(`📊 Total media: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
 
     })
     stats = await saver.getBan().then((res)=>{
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             ctx.reply(`📊 Total pengguna melanggar: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
     stats = await saver.getGroup().then((res)=>{
-        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == config.ADMIN || ctx.from.id == config.ADMIN1 || ctx.from.id == config.ADMIN2){
             ctx.reply(`📊 Total grup terdaftar: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
@@ -2117,12 +2118,11 @@ bot.on('inline_query',async(ctx)=>{
     } 
 })
  
-//heroku config
-domain = `${process.env.DOMAIN}.herokuapp.com`
+//nginx config
 bot.launch({
     webhook:{
-       domain:domain,
-        port:Number(process.env.PORT)
+       domain:config.domain,
+        port:config.PORT
  
     }
 })
