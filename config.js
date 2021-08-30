@@ -29,7 +29,7 @@ module.exports = {
         //Masukkan pesan selamat datang ketika pengguna bergabung
     MESSAGEWELCOMEBOT: '',
 
-        //Masukkan ID channel grup untuk identifikasi BOT bisa membaca pengguna yang masuk
+        //Masukkan ID channel grup untuk identifikasi bot bisa membaca pengguna yang masuk
     CHANNELJOIN: '',
 
         //Link channel grup masukkan disini dan ikuti format penulisan
