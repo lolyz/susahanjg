@@ -230,17 +230,17 @@ Anda dapat menghapus file 4 cara.</br>
 <code>/rem</code> file_id. Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.</br>
 
 ~ Hapus file group dengan mediaId.</br>
-<code>/remgrp</code> mediaId. Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log).</br>
+<code>/remgrp</code> mediaId. Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log.</br>
 
 ~ Hapus semua file Kirim oleh pengguna.</br>
-<code>/remall</code> userID. Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).</br>
+<code>/remall</code> userID. Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log.</br>
 
 ~ Hapus semua file Kirim ke B0T.</br>
-<code>/clear</code>. Ini akan menghapus semua file yang dikirim ke BOT secara permanen).</br>
+<code>/clear</code>. Ini akan menghapus semua file yang dikirim ke BOT secara permanen.</br>
 
 <h2>Kirim pesan ke pengguna</h2>
 
-<code>/broadcast</code>. Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).
+<code>/broadcast</code>. Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna.
 
 <h2>Cara Mengetahui Total Pengguna BOT.</h2>
 
