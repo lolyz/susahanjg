@@ -17,15 +17,15 @@ module.exports.botcommand = `<b>Berikut adalah beberapa perintah dan penggunaan 
 ~ Bagaimana cara kirim pesan ke pengguna dari grup.
 <b>/send</b> pesan. kirim pesan di grup.
 
-~ Bagaimana cara kirim pesan ke pengguna dari BOT.
-<b>/sendchat</b> userID pesan. kirim ke pengguna melalui BOT.
+~ Bagaimana cara kirim pesan ke pengguna dari bot.
+<b>/sendchat</b> userID pesan. kirim ke pengguna melalui bot.
 
-<b>Cara Menghapus File Dari Bot.</b>
+<b>Cara menghapus file dari bot.</b>
 Anda dapat menghapus file 4 cara.
   ⚫ Hapus file individual dengan file_id.
   ⚫ Hapus file grup dengan mediaId.
   ⚫ Hapus semua file Kirim oleh pengguna.
-  ⚫ Hapus semua file Kirim ke BOT.
+  ⚫ Hapus semua file Kirim ke bot.
 
 ~ Hapus file individual dengan file_id.
 <b>/rem</b> file_id. Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.
@@ -36,12 +36,12 @@ Anda dapat menghapus file 4 cara.
 ~ Hapus semua file Kirim oleh pengguna.
 <b>/remall</b> userID. Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log.
 
-~ Hapus semua file Kirim ke B0T.
+~ Hapus semua file Kirim ke bot.
 <b>/clear</b>. Ini akan menghapus semua file yang dikirim ke bot secara permanen.
 
 <b>Kirim pesan ke pengguna</b>
 <b>/broadcast</b>. Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna.
 
-<b>Cara Mengetahui Total Pengguna BOT.</b>
+<b>Cara mengetahui total pengguna bot.</b>
 <b>/stats</b>. Anda akan mendapatkan total pengguna memulai bot Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil.
 `;
