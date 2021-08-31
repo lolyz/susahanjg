@@ -87,7 +87,7 @@ Pemasangan ada di file config.js</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 
 <b>LANGKAH 4</b></br>
-Pindahkan beberapa yang di folder bot</br>
+Pindahkan beberapa yang ada di folder bot</br>
 Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
 - database</br>
 - config</br>
@@ -103,7 +103,7 @@ Jangan lupa gunakan perintah ini untuk jalankan bot. Pastikan sudah ada di folde
     cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
 
 <b>INFO</b></br>
-Kalian bisa menggunakan bot tanpa domain dan SSL dengan merubah kode dibawah ini di index.js menjadi <b>bot.launch()</b>. Lewatkan saja langkah NGINX dan SSL dan abaikan saja tulisan <b>DOMAIN</b> dan <b>PORT</b> di config.js.
+Kalian bisa menggunakan bot tanpa domain dan SSL dengan merubah kode dibawah ini di index.js menjadi <b>bot.launch()</b>. Lewatkan saja langkah NGINX dan SSL dan lewatkan saja tulisan <b>DOMAIN</b> dan <b>PORT</b> di config.js.
 
     bot.launch({
         webhook:{
@@ -188,7 +188,7 @@ Pemasangan ada di file config.js</br>
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 
 <b>LANGKAH 4</b></br>
-Pindahkan beberapa yang di folder bot</br>
+Pindahkan beberapa yang ada di folder bot</br>
 Pastikan ini pindah semua ke PATH /var/www/html/hooks/bot</br>
 - database</br>
 - config</br>
@@ -204,7 +204,7 @@ Jangan lupa gunakan perintah ini untuk jalankan bot. Pastikan sudah ada di folde
     cd /var/www/html/hooks/bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
 
 <b>INFO</b></br>
-Kalian bisa menggunakan bot tanpa domain dan SSL dengan merubah kode dibawah ini di index.js menjadi <b>bot.launch()</b>. Lewatkan saja langkah NGINX dan SSL dan abaikan saja tulisan <b>DOMAIN</b> dan <b>PORT</b> di config.js.
+Kalian bisa menggunakan bot tanpa domain dan SSL dengan merubah kode dibawah ini di index.js menjadi <b>bot.launch()</b>. Lewatkan saja langkah NGINX dan SSL dan lewatkan saja tulisan <b>DOMAIN</b> dan <b>PORT</b> di config.js.
 
     bot.launch({
         webhook:{
