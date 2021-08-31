@@ -101,6 +101,16 @@ Pastikan ini pindah semua ke PATH C:\nginx\html\hooks\bot</br>
 Jangan lupa gunakan perintah ini untuk jalankan bot. Pastikan sudah ada di folder bot, kalau belum ketik
 
     cd C:\nginx\html\hooks\bot pm2 start index.js --name ratufilesaver --watch --ignore-watch="node_modules"
+
+<b>INFO</b></br>
+Kalian bisa menggunakan bot tanpa domain dan SSL dengan merubah kode dibawah ini di index.js menjadi <b>bot.launch()</b>. Lewatkan saja langkah NGINX dan SSL dan abaikan saja tulisan <b>DOMAIN</b> dan <b>PORT</b> di config.js.
+
+    bot.launch({
+        webhook:{
+        domain:`${config.domain}`,
+        port:`${config.PORT}`
+        }
+    })
 <hr>
 
 <b>~ LINUX ~</b></br>
