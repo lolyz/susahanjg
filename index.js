@@ -86,14 +86,14 @@ const url4 = url2[1];
 
 // inline keyboard
 const inKey = [
-  [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
-  [{text:'📚 Dokumentasi',callback_data:'DOC'},{text:'🆘 Bantuan',callback_data:'HELP'}],
-  //[{text:'📰 Informasi BOT', url: 'https://t.me/ratufilesaver'}],
-  [{text: `${url3}`, url: `${url4}`}]
+    [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
+    [{text:'📚 Dokumentasi',callback_data:'DOC'},{text:'🆘 Bantuan',callback_data:'HELP'}],
+    [{text:'💿 Install',callback_data:'INS'}],
+    [{text: `${url3}`, url: `${url4}`}]
 ];
 
 const inKey2 = [
-  [{text: `${url3}`, url: `${url4}`}]
+    [{text: `${url3}`, url: `${url4}`}]
 ];
 
 //BOT START
@@ -316,6 +316,19 @@ bot.action('DOC',(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
+                [{text:'Kembali',callback_data:'STARTUP'}]
+            ]
+        }
+    })
+})
+
+bot.action('INS',(ctx)=>{
+    ctx.deleteMessage()
+    ctx.reply(`${helpcommand.botins}`,{
+        parse_mode: 'HTML',
+        reply_markup:{
+            inline_keyboard: [
+                [{text: `💿 HEROKU`, url: `https://github.com/BimoSora/ratuFileSaver`},{text: `💿 KOMPUTER/VPS`, url: `https://github.com/BimoSora/ratuFileSaver2`}],
                 [{text:'Kembali',callback_data:'STARTUP'}]
             ]
         }
