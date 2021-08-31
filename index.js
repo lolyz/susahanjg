@@ -328,7 +328,7 @@ bot.action('INS',(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text: `💿 HEROKU`, url: `https://github.com/BimoSora/ratuFileSaver`},{text: `💿 KOMPUTER/VPS`, url: `https://github.com/BimoSora/ratuFileSaver2`}],
+                [{text: `💿 HEROKU`, url: `https://bit.ly/3yA6IRA`},{text: `💿 KOMPUTER/VPS`, url: `https://bit.ly/38qaMsS`}],
                 [{text:'Kembali',callback_data:'STARTUP'}]
             ]
         }
