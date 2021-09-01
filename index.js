@@ -88,7 +88,7 @@ const url4 = url2[1];
 const inKey = [
     [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
     [{text:'📚 Dokumentasi',callback_data:'DOC'},{text:'🆘 Bantuan',callback_data:'HELP'}],
-    [{text:'💿 Install',callback_data:'INS'}],
+    [{text:'💿 Source code',callback_data:'SRC'}],
     [{text: `${url3}`, url: `${url4}`}]
 ];
 
@@ -322,9 +322,9 @@ bot.action('DOC',(ctx)=>{
     })
 })
 
-bot.action('INS',(ctx)=>{
+bot.action('SRC',(ctx)=>{
     ctx.deleteMessage()
-    ctx.reply(`${helpcommand.botins}`,{
+    ctx.reply(`${helpcommand.botsrc}`,{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
