@@ -87,7 +87,7 @@ Pemasangan ada di file config.js</br>
 <b>Tautan DB_URL</b>
 
     mongodb+srv://login:password@bot.qnbbq.mongodb.net/database?retryWrites=true&w=majority
-    
+
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).</br>
 
 <b>LANGKAH 4</b></br>
@@ -181,7 +181,7 @@ Pemasangan ada di file config.js</br>
 <code>PORT</code> - Port didapat dari saat anda setting nginx tadi.</br>
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.</br>
 <code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).</br>
-<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</code>
+<b>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</b>
 
     ADMIN: '',
     ADMIN1: '',
