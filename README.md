@@ -181,7 +181,7 @@ Pemasangan ada di file config.js</br>
 <code>PORT</code> - Port didapat dari saat anda setting nginx tadi.</br>
 <code>TOKEN</code> - Dapatkan Token Bot dari Bot father.</br>
 <code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).</br>
-<b>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</b>
+<b>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di code dan tinggal tambah angka di belakangnya</b></br>
 
     ADMIN: '',
     ADMIN1: '',
